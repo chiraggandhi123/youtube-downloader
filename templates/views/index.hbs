@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>YouTube Downloader</title>
+    <meta charset="utf-8" />
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="../../styles/index.css">
+    <style type="text/css">
+        #banner {
+            height: 100vh;
+            background-image: linear-gradient(to right, white 20%, black 100%), url('./static/bg-image.jpg');
+            background-blend-mode: color-dodge;
+        }
+
+        #banner .container-fluid .jumbotron {
+            background: transparent;
+        }
+        
+    </style>
+    {{!-- <link rel="stylesheet" href="./index.css"> --}}
+</head>
+
+<body>
+
+    <body data-new-gr-c-s-check-loaded="14.1117.0" data-gr-ext-installed="">
+        <header>
+            <nav class="topnav navbar navbar-expand-lg navbar-dark bg-primary">
+                <div class="container">
+                    <a class="navbar-brand" href="https://ssyoutube.com/en719EV/">
+                        <img loading="lazy" src="https://ssyoutube.com/img/logo.svg" alt="">
+                        hddyoutube
+                    </a>
+                    <!-- button triggering modal -->
+                    <li class="nav-item dropdown d-block">
+                        <span href="#" class="nav-link shad" data-toggle="dropdown" role="button" aria-expanded="true"
+                            style="color: white;" id="language-toggler">
+                            <i class="fa fa-list-ul"></i>
+                            <span class="nav-link-inner--text pl-1"> </span>
+                        </span>
+                        <div class="dropdown-menu dropdown-menu-right" id="language-dropdown">
+                            <div class="dropdown-menu-inner">
+                                <a class="dropdown-item" href="/es51dJ/youtube-video-downloader" lang="es">Spanish</a>
+                                <a class="dropdown-item" href="/de48Zp/youtube-video-downloader" lang="de">German</a>
+                                <a class="dropdown-item" href="/ar51dr/youtube-video-downloader" lang="ar">Arabic</a>
+                                <a class="dropdown-item" href="/pt52pJ/youtube-video-downloader" lang="pt">Portugal</a>
+                                <a class="dropdown-item" href="/ru51HG/youtube-video-downloader" lang="ru">Russian</a>
+                                <a class="dropdown-item" href="/id51zW/youtube-video-downloader"
+                                    lang="id">Indonesian</a>
+                                <a class="dropdown-item" href="/tr272Fc/youtube-video-downloader" lang="tr">Turkish</a>
+                                <a class="dropdown-item" href="/fr234OL/youtube-video-downloader" lang="fr">Français</a>
+                                <a class="dropdown-item" href="/it8aW/youtube-video-downloader" lang="it">Italian</a>
+                                <a class="dropdown-item" href="/hi8pb/youtube-video-downloader" lang="hi">Hindi</a>
+                                <a class="dropdown-item" href="/ja8qr/youtube-video-downloader" lang="ja">Japanese</a>
+                                <a class="dropdown-item" href="/ko10iL/youtube-video-downloader" lang="ko">Korean</a>
+                                <a class="dropdown-item" href="/th10jO/youtube-video-downloader" lang="th">Thai</a>
+                            </div>
+                        </div>
+                    </li>
+
+                </div>
+            </nav>
+        </header>
+
+        <main>
+            <section id="main" class="jumbotron mb-0 pb-3 bg-primary">
+                <div class="search-block-default-height">
+                    <div class="container text-white h-100 container-search">
+                        <div class="align-items-center text-center pl-lg-5">
+                            <h1 class="mb-3 mt-3 main_title">HDD YouTube Video Downloader</h1>
+                            <div id="m-form" class="row justify-content-center">
+                                <div class="col-12 col-md-10 col-lg-6">
+                                    <form id="main-form" action="/download" method="get" class="card card-sm">
+                                        <div class="card-body row no-gutters align-items-center search_form">
+                                            <div class="col"><input type="hidden" name="_token"
+                                                    value="Jky7KIzGQKxOtQJF83Qcua7XQO2oCoxsqzW8aBK2">
+                                                <div id="div_id_url" style="margin:0px" class="form-group">
+                                                    <div><input type="text" name="url" style="border:none !important"
+                                                            placeholder="Paste your video link here"
+                                                            autofocus="autofocus" required="required" id="id_url"
+                                                            class="textinput textInput form-control"></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-auto"><button type="submit" id="search"
+                                                    class="btn btn-lg btn-danger"><span
+                                                        class="d-none d-md-inline">Download</span> <i
+                                                        class="fas fa-arrow-right"></i></button></div> <!---->
+                                        </div>
+                                    </form> <img loading="lazy" src="https://ssyoutube.com/img/loader.svg" id="img"
+                                        width="60" height="60" style="display: none;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="main-results"><!----> <!----> <!----></div>
+                    <div><!----> <!----> <!----></div>
+                    <div><!----> <!----></div>
+                </div>
+            </section>
+            <section class="container mt-5 mb-5 align-items-center b-instruction how-to-mp4">
+                <div class="row">
+                    <div class="col-md-12 col-lg-12">
+                        <div class="media">
+                            <div class="media-body">
+                                <p class="text-muted">As the third most popular website worldwide, YouTube offers an
+                                    outstanding user experience. However, it offers download video option only to its premium user, but don't worry because hddyoutube is here to save the day!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{!-- <h5 class="text-muted mb-0 text-center">Supported Platforms:</h5>
+                <div class="row justify-content-center">
+                    <div class="col-6 col-sm-2 p-4 text-center">
+                        <img src="https://ssyoutube.com/img/platforms/windows.svg" alt="" width="150" height="150">
+                    </div>
+                    <div class="col-6 col-sm-2 p-4 text-center">
+                        <img src="https://ssyoutube.com/img/platforms/apple.svg" alt="" width="150" height="150">
+                    </div>
+                    <div class="col-6 col-sm-2 p-4 text-center">
+                        <img src="https://ssyoutube.com/img/platforms/android.svg" alt="" width="150" height="150">
+                    </div>
+                    <div class="col-6 col-sm-2 p-4 text-center">
+                        <img src="https://ssyoutube.com/img/platforms/linux.svg" alt="" width="150" height="150">
+                    </div>
+                </div> --}}
+                <div class="row">
+                    <div class="col-md-12 col-lg-12">
+                        <div class="media">
+                            <div class="media-body">
+                                <p class="text-muted text-left">Embrace the convenience of our YouTube video downloader
+                                    service, empowering you to effortlessly select and download videos for free! Explore
+                                    a diverse range of formats, including MP4, MP3, SQ, HD, Full HD, and more, to obtain
+                                    videos of exceptional quality. Our online downloader is fully compatible with both
+                                    PCs and mobile devices, providing you the freedom to enjoy it anytime, anywhere!</p>
+                                <p class="text-muted text-left">Discover the seamless process of downloading YouTube
+                                    videos with our user-friendly service. Save valuable time by utilizing our online
+                                    downloader on your devices and unlock access to a vast collection of free content!
+                                </p>
+                                <p class="text-muted text-center">Want to learn more? Delve into our comprehensive
+                                    instructions below on how to download videos using our service.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            {{!-- <section class="container mt-5 mb-5 align-items-center b-instruction how-to-mp4">
+                <h2 class="col-12 text-center mb-4">A Comprehensive Guide: How to Download YouTube Videos Online</h2>
+                <div class="row text-center justify-content-center">
+                    <div class="col-sm-6 col-lg-4">
+                        <div class="media">
+                            <div class="media-body">
+                                <div class="img mx-auto mb-4 pb-1 mb-lg-0 col-10 col-sm-12 h-auto">
+                                    <picture>
+                                        <img loading="lazy" src="https://ssyoutube.com/img/steps/howto2.png" alt=""
+                                            width="225" height="180">
+                                    </picture>
+                                </div>
+                                <p class="text-muted">Explore the simple steps to download YouTube videos online:</p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-sm-6 col-lg-4">
+                        <div class="media">
+                            <div class="media-body">
+                                <div class="img mx-auto mb-4 pb-1 mb-lg-0 col-10 col-sm-12 h-auto">
+                                    <picture>
+                                        <img loading="lazy" src="https://ssyoutube.com/img/steps/howto3.png" alt=""
+                                            width="225" height="180">
+                                    </picture>
+                                </div>
+                                <p class="text-muted">1. Copy the link of the desired YouTube video for download.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-sm-6 col-lg-4">
+                        <div class="media">
+                            <div class="media-body">
+                                <div class="img mx-auto mb-4 pb-1 mb-lg-0 col-10 col-sm-12 h-auto">
+                                    <picture>
+                                        <img loading="lazy" src="https://ssyoutube.com/img/steps/howto4.png" alt=""
+                                            width="225" height="180">
+                                    </picture>
+                                </div>
+                                <p class="text-muted">2. Paste the video link into the designated input field on our
+                                    website.</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </section> --}}
+            <section class="bg-08003a" style="overflow-wrap:anywhere">
+                <div class="container pt-5 pb-5 align-items-center color-white bg-08003a">
+                    {{!-- <div>
+                        <h2 class="col-12 text-center mb-3">
+                            How to Download YouTube Videos in Multiple Formats</h2>
+                        <ol>
+                            <li>If you wish to download YouTube videos in different formats, such as HD, MP3, or MP4,
+                                you can utilize the <a
+                                    href="https://televzr.com/?utm_source=savefrom&amp;utm_medium=youtube-article&amp;utm_campaign=televzr"
+                                    rel="nofollow noopener noreferrer" target="_blank">Televzr Downloader</a>.</li>
+                            <li>Alternatively, you can try Ummy, another well-known YouTube video downloader. Simply
+                                click on the "HD via Ummy" or "MP3 via Ummy" buttons located below your preferred video.
+                            </li>
+                            <li>By installing the YouTube downloader application on your computer, you will discover a
+                                "Download" button beneath each video on YouTube.</li>
+                            <li>This downloading method functions seamlessly on both Mac OS and all Windows versions,
+                                enabling you to effortlessly download YouTube videos.</li>
+                        </ol>
+                    </div> --}}
+                     <div class="media">
+                            <div class="media-body">
+                                <h2 class="text-center">How to Save Movies without a YouTube Video Downloader Add-On
+                                </h2>
+                                <p class="text-left">Learn how to download YouTube videos without using a video
+                                    downloader add-on! Follow this simple method of adding 'hdd' to the video URL to
+                                    quickly save the video directly to your device!</p>
+                                <p class="text-left">Check out this example:</p>
+                                <ul class="text-left">
+                                    <li>Original URL: https://youtube.com/watch?v=YOcmSsBfafg</li>
+                                    <li>URL with 'hdd': https://hddyoutube.com/watch?v=YOcmSsBfafg</li>
+                                </ul>
+                            </div>
+                        </div>
+                </div>
+            </section>
+            {{!-- <section class=" container mt-5 mb-5 align-items-center b-instruction how-to-mp4">
+                <div class="row">
+                    <div class="col-md-12 col-lg-12">
+                        <div class="media">
+                            <div class="media-body">
+                                <h2 class="text-center">How to Save Movies without a YouTube Video Downloader Add-On
+                                </h2>
+                                <p class="text-left">Learn how to download YouTube videos without using a video
+                                    downloader add-on! Follow this simple method of adding 'ss' to the video URL to
+                                    quickly save the video directly to your device!</p>
+                                <p class="text-left">Check out this example:</p>
+                                <ul class="text-left">
+                                    <li>Original URL: https://youtube.com/watch?v=YOcmSsBfafg</li>
+                                    <li>URL with 'ss': https://ssyoutube.com/watch?v=YOcmSsBfafg</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section> --}}
+
+          
+            <section class="how-to-use container">
+                <h2 class="text-center">
+                    How to Utilize HDDYouTube Short Domain
+                </h2>
+                <ul>
+
+                    <li>
+                        <h3>Open a YouTube Video</h3>
+                        <img src="/img/steps/how_can_i_save_1.png" alt="">
+                        <p>To utilize HDDYouTube, begin by opening a YouTube video and acquiring its URL.</p>
+                    </li>
+                    <li>
+                        <h3>Insert "hdd" Before the Video URL</h3>
+                        <img src="/img/steps/how_can_i_save_2.png" alt="">
+                        <p>Insert "hdd" before the video URL to initiate the download process.</p>
+                    </li>
+                    <li>
+                        <h3>Initiate the Download</h3>
+                        <img src="/img/steps/how_can_i_save_3.png" alt="">
+                        <p>Press the "Enter" key to commence the download and be redirected to the download page.</p>
+                    </li>
+                </ul>
+            </section>
+
+            <section id="wrapper" class=" faq-container">
+                <h2 id="accordion_header" class="text-center">Frequently Asked Questions</h2>
+                <div class="accordion-block-closed" id="faq" itemscope="" itemtype="https://schema.org/FAQPage">
+                    <div class="accordion_wrap_line" itemscope="" itemprop="mainEntity"
+                        itemtype="https://schema.org/Question">
+                        <div class="accordion_spoiler_wrap">
+                            <div class="accordion_border">
+                                <input type="checkbox" class="accordion_toggle checkbox " data-bs-toggle="collapse"
+                                    data-bs-target="#collapse0" aria-expanded="false" aria-controls="collapse0">
+                                <div class="accordion_spoiler_title" itemprop="name">
+                                    <span class="accordion-button-text">What is HDDYoutube and What are Its
+                                        Benefits?</span>
+                                    <div class="accordion_icon"></div>
+                        </div>
+                        <div class=" accordion_spoiler_content" id="collapse0" aria-labelledby="heading0"
+                                        data-bs-parent="#faq" itemscope="" itemprop="acceptedAnswer"
+                                        itemtype="https://schema.org/Answer">
+                                        <p itemprop="text">
+                                            HDDYoutube is a free online tool that enables you to download YouTube videos
+                                            in various formats and resolutions. The advantages of using HDDYoutube
+                                            include speedy downloads, high-quality video and audio, and the option to
+                                            save videos for offline viewing.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion_wrap_line" itemscope="" itemprop="mainEntity"
+                            itemtype="https://schema.org/Question">
+                            <div class="accordion_spoiler_wrap">
+                                <div class="accordion_border">
+                                    <input type="checkbox" class="accordion_toggle checkbox " data-bs-toggle="collapse"
+                                        data-bs-target="#collapse1" aria-expanded="false" aria-controls="collapse1">
+                                    <div class="accordion_spoiler_title" itemprop="name">
+                                        <span class="accordion-button-text">How Can I Download a YouTube Video Using
+                                            HDDYoutube?</span>
+                                        <div class="accordion_icon"></div>
+                        </div>
+                        <div class=" accordion_spoiler_content" id="collapse1" aria-labelledby="heading1"
+                                            data-bs-parent="#faq" itemscope="" itemprop="acceptedAnswer"
+                                            itemtype="https://schema.org/Answer">
+                                            <p itemprop="text">
+                                                To download a YouTube video using HDDYoutube, simply copy the video URL
+                                                and paste it into the search bar on the HDDYoutube website. Then select
+                                                the desired format and resolution and click the download button. It’s
+                                                that simple!
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion_wrap_line" itemscope="" itemprop="mainEntity"
+                                itemtype="https://schema.org/Question">
+                                <div class="accordion_spoiler_wrap">
+                                    <div class="accordion_border">
+                                        <input type="checkbox" class="accordion_toggle checkbox "
+                                            data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="false"
+                                            aria-controls="collapse2">
+                                        <div class="accordion_spoiler_title" itemprop="name">
+                                            <span class="accordion-button-text">What Formats are Supported for Video
+                                                Downloads with HDDYoutube?</span>
+                                            <div class="accordion_icon"></div>
+                        </div>
+                        <div class=" accordion_spoiler_content" id="collapse2" aria-labelledby="heading2"
+                                                data-bs-parent="#faq" itemscope="" itemprop="acceptedAnswer"
+                                                itemtype="https://schema.org/Answer">
+                                                <p itemprop="text">
+                                                    HDDYoutube supports a wide range of video and audio formats,
+                                                    including MP4, AVI, FLV, MOV, WMV, and more. You can also choose
+                                                    from different resolutions, such as 720p or 1080p, based on your
+                                                    preferences.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion_wrap_line" itemscope="" itemprop="mainEntity"
+                                    itemtype="https://schema.org/Question">
+                                    <div class="accordion_spoiler_wrap">
+                                        <div class="accordion_border">
+                                            <input type="checkbox" class="accordion_toggle checkbox "
+                                                data-bs-toggle="collapse" data-bs-target="#collapse3"
+                                                aria-expanded="false" aria-controls="collapse3">
+                                            <div class="accordion_spoiler_title" itemprop="name">
+                                                <span class="accordion-button-text">Can I Download Videos from YouTube
+                                                    Playlists or Channels with HDDYoutube?</span>
+                                                <div class="accordion_icon"></div>
+                        </div>
+                        <div class=" accordion_spoiler_content" id="collapse3" aria-labelledby="heading3"
+                                                    data-bs-parent="#faq" itemscope="" itemprop="acceptedAnswer"
+                                                    itemtype="https://schema.org/Answer">
+                                                    <p itemprop="text">
+                                                        Yes, you can utilize HDDYoutube to download videos from entire
+                                                        YouTube playlists or channels. Simply copy the playlist or
+                                                        channel URL and paste it into the search bar on the HDDYoutube
+                                                        website. Then select the videos you wish to download and click
+                                                        the download button.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion_wrap_line" itemscope="" itemprop="mainEntity"
+                                        itemtype="https://schema.org/Question">
+                                        <div class="accordion_spoiler_wrap">
+                                            <div class="accordion_border">
+                                                <input type="checkbox" class="accordion_toggle checkbox "
+                                                    data-bs-toggle="collapse" data-bs-target="#collapse4"
+                                                    aria-expanded="false" aria-controls="collapse4">
+                                                <div class="accordion_spoiler_title" itemprop="name">
+                                                    <span class="accordion-button-text">Is HDDYoutube Safe to Use?</span>
+                                                    <div class="accordion_icon"></div>
+                        </div>
+                        <div class=" accordion_spoiler_content" id="collapse4" aria-labelledby="heading4"
+                                                        data-bs-parent="#faq" itemscope="" itemprop="acceptedAnswer"
+                                                        itemtype="https://schema.org/Answer">
+                                                        <p itemprop="text">
+                                                            Yes, HDDYoutube is a secure platform. We prioritize user
+                                                            privacy and security, and we do not store any personal
+                                                            information. Our website is regularly updated to ensure it
+                                                            remains free from viruses and malware.
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+            </section>
+        </main>
+        <footer class="bg-black pb-5 pt-4 mt-auto">
+            <div class="row justify-content-center text-center mb-3">
+                <div class="col-md-12">
+                    <span class="d-block mt-3 text-gray">© 2023 YouTube Downloader,
+                        made with
+                        <i class="fas fa-heart text-danger"></i> by HDDYoutube.
+                    </span>
+                </div>
+            </div>
+            {{!-- <div class="desktop-footer d-none d-md-flex container">
+                <div class="row justify-content-center w-100 color-white">
+                    <div class="col-auto">
+                        <p class="col-header-name">
+                            Youtube Downloader
+                        </p>
+                        <ul>
+                            <li>
+                                <a href="https://ssyoutube.com/en84DH/youtube-to-mp4" lang="en">
+                                    Download Youtube to mp4
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-auto">
+                        <p class="col-header-name">
+                            <a href="https://ssyoutube.com/en14GU/download-from-tiktok" lang="en">TikTok Video
+                                Downloader</a>
+                        </p>
+                        <ul>
+                            <li>
+
+                                <a href="https://ssyoutube.com/en26pK/download-from-instagram" lang="en">Instagram Video
+                                    Downloader</a>
+                            </li>
+                            <li>
+                                <a href="https://ssyoutube.com/en24yr/how-to-download-facebook-video" lang="en">Facebook
+                                    Video Downloader</a>
+                            </li>
+                            <li>
+                                <a href="https://ssyoutube.com/en14kN/download-from-twitter" lang="en">Twitter Video
+                                    Downloader</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-auto">
+                        <p class="col-header-name">
+                            <a href="/en3tp/about" lang="en">About us</a>
+                        </p>
+                        <ul>
+                            <li>
+                                <a href="/en3/privacy-policy" lang="en">Privacy Policy</a>
+                            </li>
+                            <li>
+                                <a href="/en3BE/terms-of-service" lang="en">Terms of Service</a>
+                            </li>
+                            <li>
+                                <a href="/en4hC/contact" lang="en">Contact</a>
+                            </li>
+                            <li>
+                                <a href="/en3QM/api-faq" lang="en">API</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-auto">
+                        <p class="col-header-name">
+                            Partners
+                        </p>
+                        <ul>
+                            <li>
+                                <a href="https://onlinevideoconverter.pro/" target="_blank"
+                                    lang="en">OnlineVideoConverter</a>
+                            </li>
+                            <li>
+                                <a href="https://savefrom.net/" target="_blank" lang="en">SaveFrom.net</a>
+                            </li>
+                            <li>
+                                <a href="https://save-from.net/" target="_blank" lang="en">Save-From.net</a>
+                            </li>
+                            <li>
+                                <a href="https://igram.world/" target="_blank" lang="en">iGram</a>
+                            </li>
+                            <li>
+                                <a href="https://storiesig.info/" target="_blank" lang="en">StoriesIG</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="mobile-footer d-md-none container">
+                <div class="accordion" id="accordion-footer">
+                    <div class="card">
+                        <div class="card-header">
+                            <button class="btn btn-link btn-block text-left collapsed" type="button"
+                                data-toggle="collapse" data-target="#footerOne" aria-expanded="false"
+                                aria-controls="footerOne">
+                                <a href="https://ssyoutube.com/en84DH/youtube-to-mp4" lang="en">Download Youtube to
+                                    mp4</a>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <button class="btn btn-link btn-block text-left collapsed" type="button"
+                                data-toggle="collapse" data-target="#footerTwo" aria-expanded="false"
+                                aria-controls="footerTwo">
+                                <a href="https://ssyoutube.com/en24yr/how-to-download-facebook-video" lang="en">Facebook
+                                    Video Downloader</a>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <button class="btn btn-link btn-block text-left collapsed" type="button"
+                                data-toggle="collapse" data-target="#footerThree" aria-expanded="false"
+                                aria-controls="footerThree">
+                                <a href="https://ssyoutube.com/en26pK/download-from-instagram" lang="en">Instagram Video
+                                    Downloader</a>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <button class="btn btn-link btn-block text-left collapsed" type="button"
+                                data-toggle="collapse" data-target="#footerFive" aria-expanded="false"
+                                aria-controls="footerFive">
+                                <a href="https://ssyoutube.com/en14GU/download-from-tiktok" lang="en">TikTok Video
+                                    Downloader</a>
+                            </button>
+                        </div>
+
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <button class="btn btn-link btn-block text-left collapsed" type="button"
+                                data-toggle="collapse" data-target="#footerSix" aria-expanded="false"
+                                aria-controls="footerSix">
+                                <a href="https://ssyoutube.com/en14kN/download-from-twitter" lang="en">Twitter Video
+                                    Downloader</a>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <button class="btn btn-link btn-block text-left collapsed" type="button"
+                                data-toggle="collapse" data-target="#footerSeven" aria-expanded="false"
+                                aria-controls="footerSeven">
+                                <a href="/en3tp/about" lang="en">About us</a>
+                            </button>
+                        </div>
+                        <div id="footerSeven" class="collapse" aria-labelledby="footerSeven"
+                            data-parent="#accordion-footer">
+                            <div class="card-body">
+                                <ul>
+                                    <li>
+                                        <a href="/en3/privacy-policy" lang="en">Privacy Policy</a>
+                                    </li>
+                                    <li>
+                                        <a href="/en3BE/terms-of-service" lang="en">Terms of Service</a>
+                                    </li>
+                                    <li>
+                                        <a href="/en4hC/contact" lang="en">Contact</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <button class="btn btn-link btn-block text-left collapsed" type="button"
+                                data-toggle="collapse" data-target="#footerEight" aria-expanded="false"
+                                aria-controls="footerEight">
+                                <a href="/en3QM/api-faq" lang="en">API</a>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <button class="btn btn-link btn-block text-left collapsed" type="button"
+                                data-toggle="collapse" data-target="#footerTen" aria-expanded="false"
+                                aria-controls="footerTen" style="color:#20c997">
+                                Partners
+                            </button>
+                        </div>
+                        <div id="footerTen" class="collapse" aria-labelledby="footerTen"
+                            data-parent="#accordion-footer">
+                            <div class="card-body">
+                                <ul>
+                                    <li>
+                                        <a href="https://savefrom.net/" target="_blank" lang="en">SaveFrom</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://background-remover.com/" target="_blank" lang="en">Background
+                                            Remover</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://storiesig.info/" target="_blank" lang="en">StoriesIG</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> --}}
+        </footer>
+    </body>
+</body>
+
+</html>
